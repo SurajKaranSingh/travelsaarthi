@@ -1,0 +1,115 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .btn {
+            background: #ff5722;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #e64a19;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #cfd8dc;
+        }
+
+        .footer a {
+            color: #90caf9;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAP3WQ2eOWHAET2qCoHG2jAM3mPp1dthe0",
+        authDomain: "holi-c2b1d.firebaseapp.com",
+        projectId: "holi-c2b1d",
+        storageBucket: "holi-c2b1d.firebasestorage.app",
+        messagingSenderId: "336688673137",
+        appId: "1:336688673137:web:3e6765f81bb73a3de306d0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    auth.languageCode = 'en';
+    const provider = new GoogleAuthProvider();
+
+    const login = document.getElementById('login');
+    login.addEventListener('click', () => {
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            const user = result.user;
+
+            // Set local storage and cookies
+            localStorage.setItem("logged_in", true);
+            localStorage.setItem("user_id", user.uid);
+            localStorage.setItem("email", user.email);
+
+            document.cookie = `logged_in=true; path=/`;
+            document.cookie = `user_id=${user.uid}; path=/`;
+            document.cookie = `email=${user.email}; path=/`;
+
+            console.log("Logged in user:", user);
+            window.location.href = './';
+        })
+        .catch((error) => {
+            console.error("Login error:", error);
+        });
+    });
+</script>
+<body>
+    <div class="container">
+        <h1>Welcome to TravelSaathi,</h1>
+        <p>Sign in with your Google account to access your dashboard.</p>
+        <button id="login" class="btn">Log in with Google</button>
+        <div class="footer">
+            <p>Need help? <a href="mailto:singhsurajkaran@gmail.com">Contact support</a></p>
+        </div>
+    </div>
+</body>
+</html> -->
